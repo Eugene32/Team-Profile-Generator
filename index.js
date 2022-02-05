@@ -78,10 +78,7 @@ async function main() {
 
     do {
         const mainMenuChoice = await inquirer.prompt(menuPrompts);
-        
-        console.log(`${mainMenuChoice.menuSelection}`);
-      
-
+            
         if (mainMenuChoice.menuSelection == 'Add an Engineer') {
             console.log('Add an engineer');
         }
@@ -92,7 +89,7 @@ async function main() {
         else{
             answer = true;
         }
-        console.log(answer);
+        
         
     } while (answer === false);
 
