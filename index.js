@@ -43,57 +43,134 @@ menuPrompts = [
 ]
 
 
-// const managerDetails = inquirer
-//     .prompt(managerPrompts)
-//     .then(managerData => {
-//         console.log(managerData);
-//         const managerFile = `${managerData.managerName}, ${managerData.managerID}, ${managerData.managerEmail}, ${managerData.managerNumber}`;
-//         const managerFileData = JSON.stringify(managerFile);
-//         console.log(managerFileData);
-//         fileName = './src/manager.JSON';
-//         fs.writeFile(fileName, managerFileData, (err) =>
-//             err ? console.log(err) : console.log('Success!')
-//         );
+engineerPrompts = [
+    {
+        type: 'input',
+        name: 'engineerName',
+        message: "Engineer's name:  ",
+    },
+    {
+        type: 'input',
+        name: 'engineerID',
+        message: "Employee ID:  ",
+    },
+    {
+        type: 'input',
+        name: 'engineerEmail',
+        message: "Email:  ",
+    },
+    {
+        type: 'input',
+        name: 'engineerGitHub',
+        message: 'GitHub Username:  ',
+    },
+]
 
-//     });
+internPrompts = [
+    {
+        type: 'input',
+        name: 'internName',
+        message: "Intern's name:  ",
+    },
+    {
+        type: 'input',
+        name: 'internID',
+        message: "Employee ID:  ",
+    },
+    {
+        type: 'input',
+        name: 'internEmail',
+        message: "Email:  ",
+    },
+    {
+        type: 'input',
+        name: 'internSchool',
+        message: 'School:  ',
+    },
+]
 
 
-const saveManagerFile = () => { };
+const collectInputs = async (inputs = []) => {
+    const prompts = [
+        {
+            type: 'input',
+            name: 'engineerName',
+            message: "Engineer's name:  ",
+        },
+        {
+            type: 'input',
+            name: 'engineerID',
+            message: "Employee ID:  ",
+        },
+        {
+            type: 'input',
+            name: 'engineerEmail',
+            message: "Email:  ",
+        },
+        {
+            type: 'input',
+            name: 'engineerGitHub',
+            message: 'GitHub Username:  ',
+        },
+        {
+            type: 'confirm',
+            name: 'again',
+            message: 'Add another engineer? ',
+            default: true
+        }
+    ];
 
+    const { again, ...answers } = await inquirer.prompt(prompts);
+    const newInputs = [...inputs, answers];
+    return again ? collectInputs(newInputs) : newInputs;
+};
+
+
+
+function saveManagerDetails(managerData) {
+    const managerFile = `${managerData.managerName}, ${managerData.managerID}, ${managerData.managerEmail}, ${managerData.managerNumber}`;
+    const managerFileData = JSON.stringify(managerFile);
+    fileName = './src/manager.JSON';
+    fs.writeFile(fileName, managerFileData, (err) =>
+        err ? console.log(err) : null);
+
+};
 
 async function main() {
     const managerData = await inquirer.prompt(managerPrompts);
-
-    function saveManagerDetails() {
-        const managerFile = `${managerData.managerName}, ${managerData.managerID}, ${managerData.managerEmail}, ${managerData.managerNumber}`;
-        const managerFileData = JSON.stringify(managerFile);
-        fileName = './src/manager.JSON';
-        fs.writeFile(fileName, managerFileData, (err) =>
-            err ? console.log(err) : null);
-
-    };
-
-    const saveManagerFile = saveManagerDetails();
+    //const saveManagerFile = saveManagerDetails(managerData);
+    const manager = new Manager(managerData.managerName, managerData.managerID,managerData.managerEmail,managerData.managerNumber);
+    console.log(manager);
     let answer = false;
+    let engineer = [];
+    let eCntr = 0;
+    let intern = [];
+    let iCntr = 0;
 
     do {
         const mainMenuChoice = await inquirer.prompt(menuPrompts);
-            
-        if (mainMenuChoice.menuSelection == 'Add an Engineer') {
-            console.log('Add an engineer');
+
+        if (mainMenuChoice.menuSelection == 'Add an Engineer') {        
+            const engineerData = await inquirer.prompt(engineerPrompts);
+            engineer[eCntr] = new Engineer(engineerData.engineerName, engineerData.engineerID, engineerData.engineerEmail, engineerData.engineerGitHub);
+            console.log(engineer[eCntr]);
+            eCntr++;
         }
 
-        else if (mainMenuChoice.menuSelection == 'Add an Intern')  {
+        else if (mainMenuChoice.menuSelection == 'Add an Intern') {
             console.log('Add an intern');
         }
-        else{
+        else {
             answer = true;
         }
-        
-        
+
+
     } while (answer === false);
 
 }
+
+
+
 
 main();
 
