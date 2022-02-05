@@ -67,27 +67,34 @@ async function main() {
     function saveManagerDetails() {
         const managerFile = `${managerData.managerName}, ${managerData.managerID}, ${managerData.managerEmail}, ${managerData.managerNumber}`;
         const managerFileData = JSON.stringify(managerFile);
-        console.log(managerFileData);
         fileName = './src/manager.JSON';
         fs.writeFile(fileName, managerFileData, (err) =>
-            err ? console.log(err) : console.log('Success!'));
+            err ? console.log(err) : null);
 
     };
 
     const saveManagerFile = saveManagerDetails();
-    const mainMenuChoice = await inquirer.prompt(menuPrompts);
-    console.log(mainMenuChoice);
-    
-    if (mainMenuChoice == 'Add an Engineer') {
+    let answer = false;
 
-    }
+    do {
+        const mainMenuChoice = await inquirer.prompt(menuPrompts);
+        
+        console.log(`${mainMenuChoice.menuSelection}`);
+      
 
-    else {
+        if (mainMenuChoice.menuSelection == 'Add an Engineer') {
+            console.log('Add an engineer');
+        }
 
-    }
-
-
-
+        else if (mainMenuChoice.menuSelection == 'Add an Intern')  {
+            console.log('Add an intern');
+        }
+        else{
+            answer = true;
+        }
+        console.log(answer);
+        
+    } while (answer === false);
 
 }
 
