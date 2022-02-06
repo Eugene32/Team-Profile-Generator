@@ -173,12 +173,16 @@ async function main() {
 
     } while (answer === false);
 
+    console.log(manager);
+    console.log(engineer);
+    console.log(engineer.length);
+    console.log(intern);
+    console.log(intern.length);
 }
 
-
-
-
 main();
+
+
 
 
 
