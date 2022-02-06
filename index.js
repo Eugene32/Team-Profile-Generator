@@ -6,7 +6,7 @@ const Intern = require('./lib/internClass');
 
 const fs = require('fs');
 const inquirer = require('inquirer');
-const { resolve } = require('path');
+//const { resolve } = require('path');
 
 managerPrompts = [
     {
@@ -126,7 +126,6 @@ const collectInputs = async (inputs = []) => {
 };
 
 
-
 function saveManagerDetails(managerData) {
     const managerFile = `${managerData.managerName}, ${managerData.managerID}, ${managerData.managerEmail}, ${managerData.managerNumber}`;
     const managerFileData = JSON.stringify(managerFile);
@@ -137,9 +136,11 @@ function saveManagerDetails(managerData) {
 };
 
 async function main() {
+
+
     const managerData = await inquirer.prompt(managerPrompts);
-    //const saveManagerFile = saveManagerDetails(managerData);
-    const manager = new Manager(managerData.managerName, managerData.managerID,managerData.managerEmail,managerData.managerNumber);
+    //const saveManagerFile = saveManagerDetails(managerData);  //Use this function if you want to save the file as a JSON.
+    const manager = new Manager(managerData.managerName, managerData.managerID, managerData.managerEmail, managerData.managerNumber);
     console.log(manager);
     let answer = false;
     let engineer = [];
@@ -150,20 +151,25 @@ async function main() {
     do {
         const mainMenuChoice = await inquirer.prompt(menuPrompts);
 
-        if (mainMenuChoice.menuSelection == 'Add an Engineer') {        
+        if (mainMenuChoice.menuSelection == 'Add an Engineer') {
             const engineerData = await inquirer.prompt(engineerPrompts);
             engineer[eCntr] = new Engineer(engineerData.engineerName, engineerData.engineerID, engineerData.engineerEmail, engineerData.engineerGitHub);
             console.log(engineer[eCntr]);
+            console.log(engineer);
             eCntr++;
         }
 
         else if (mainMenuChoice.menuSelection == 'Add an Intern') {
             console.log('Add an intern');
+            const internData = await inquirer.prompt(internPrompts);
+            intern[iCntr] = new Intern(internData.internName, internData.internID, internData.internEmail, internData.internSchool);
+            console.log(intern[iCntr]);
+            console.log(intern);
+            iCntr++;
         }
         else {
             answer = true;
         }
-
 
     } while (answer === false);
 
