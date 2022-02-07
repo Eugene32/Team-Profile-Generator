@@ -13,24 +13,33 @@
 
 * [Installation](#installation)
 * [Usage](#usage)
-* [License](#license)
 * [Contributing](#contributing)
 * [Tests](#tests)
+* [Demo](#demo)
 * [Questions](#questions)
-
-
+* [License](#license)
 
 ### Installation:    
 - Fork or copy the whole directory.
 
 ### Usage:  
-Can be used for any device.
+- Can be used for any device.
 
 ### Contributing:  
-none
+- None
 
 ### Tests:  
-none
+- Under development
+
+### Demo:  
+- Demo page:  [demo](https://github.com/eugene32)
+
+### Questions: 
+
+Github:  [eugene32](https://github.com/eugene32)
+
+Email:   [ekahiyang@gmail.com](mailto:ekahiyang@gmail.com)
+
 
 ### License:  
 The MIT License
@@ -54,8 +63,3 @@ The MIT License
 
 [MIT License link](https://opensource.org/licenses/MIT)
 
-### Questions: 
-
-Github:  [eugene32](https://github.com/eugene32)
-
-Email:   [ekahiyang@gmail.com](mailto:ekahiyang@gmail.com)
