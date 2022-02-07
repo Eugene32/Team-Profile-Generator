@@ -32,7 +32,7 @@
 - Under development
 
 ### Demo:  
-- Demo page:  [demo](https://github.com/eugene32)
+- Demo page:  [demo](src/demo_page.png)
 
 ### Questions: 
 
