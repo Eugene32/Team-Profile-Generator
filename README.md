@@ -33,6 +33,7 @@
 
 ### Demo:  
 - Demo page: 
+
 ![alt text][logo]
 
 [logo]: src/demo_page.png "Team Generator demo"
