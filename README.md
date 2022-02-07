@@ -21,6 +21,9 @@
 
 ### Installation:    
 - Fork or copy the whole directory.
+- Change to directory where index.js is located.
+- Type 'npm i'.
+- Type 'node index.js' to start.
 
 ### Usage:  
 - Can be used for any device.
