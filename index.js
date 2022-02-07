@@ -90,121 +90,121 @@ internPrompts = [
     },
 ]
 
-const htmlFileStart = `<!DOCTYPE html>
- <html lang="en">
 
- <head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="stylesheet" href="./assets/css/reset.css">
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-     <link rel="stylesheet" href="./assets/css/style.css">
-     <title>Document</title>
- </head>
+const writeHTMLFile = () => {
 
- <body class="container">
-     <nav class="navbar" role="navigation" aria-label="main navigation ">
-         <div class="navbar-brand">
-             <a class="navbar-item" href="https://bulma.io">
-                 <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-             </a>
+    const htmlFileStart = `<!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./assets/css/reset.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <title>Team</title>
+    </head>
+    
+    <body class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation ">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://bulma.io">
+                    <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                </a>
+    
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+    
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item">
+                        Home
+                    </a>
+    
+                    <a class="navbar-item">
+                        Documentation
+                    </a>
+    
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            More
+                        </a>
+    
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item">
+                                About
+                            </a>
+                            <a class="navbar-item">
+                                Jobs
+                            </a>
+                            <a class="navbar-item">
+                                Contact
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item">
+                                Report an issue
+                            </a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light">
+                                Log in
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    
+        <main class="container is-relative ">
+        <section id="managerContainer" class="columns box is-half columns is-centered is-bordered">       
+        `;
 
-             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                 data-target="navbarBasicExample">
-                 <span aria-hidden="true"></span>
-                 <span aria-hidden="true"></span>
-                 <span aria-hidden="true"></span>
-             </a>
-         </div>
+    fs.writeFile('./dist/team.html', htmlFileStart, (err) =>
+        err ? console.log(err) : null
+    );
+}
 
-         <div id="navbarBasicExample" class="navbar-menu">
-             <div class="navbar-start">
-                 <a class="navbar-item">
-                     Home
-                 </a>
+appendDetails = (name, id, email, unique, role) => {
+    console.log('append_manager_details');
+    const htmlMan =
+        `      <div class="box bd-notification is-primary is-one-fifth is-bordered" >
+ <ul class="">
+   <li>
+       <ul>
+           <li><span class="container title is-5-fullhd">${name}</span></li>
+           <li><span class="container title is-4-fullhd">${role}</span></li>
+       </ul>
+   </li>
+   <li>
+       <ul>
+           <li class="box">id: <span >${id}</span></li>
+           <li class="box">email:<a href="mailto:${email}">${email}</a></li>
+           <li class="box">Office number: <span >${unique}</span></li>
+       </ul>
+   </li>
+ </ul>
+ </div >
+`;
 
-                 <a class="navbar-item">
-                     Documentation
-                 </a>
+    fs.appendFile('./dist/team.html', htmlMan, (err) =>
+        err ? console.log(err) : null
+    );
 
-                 <div class="navbar-item has-dropdown is-hoverable">
-                     <a class="navbar-link">
-                         More
-                     </a>
-
-                     <div class="navbar-dropdown">
-                         <a class="navbar-item">
-                             About
-                         </a>
-                         <a class="navbar-item">
-                             Jobs
-                         </a>
-                         <a class="navbar-item">
-                             Contact
-                         </a>
-                         <hr class="navbar-divider">
-                         <a class="navbar-item">
-                             Report an issue
-                         </a>
-                     </div>
-                 </div>
-             </div>
-
-             <div class="navbar-end">
-                 <div class="navbar-item">
-                     <div class="buttons">
-                         <a class="button is-primary">
-                             <strong>Sign up</strong>
-                         </a>
-                         <a class="button is-light">
-                             Log in
-                         </a>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </nav>
-
-     <main class="container is-relative ">`;
-
-
-let htmlMan;
-
-
-// const htmlManEnd = `</section>`;
-
-// const htmlEngStart = `<section id="engineerContainer" class="columns box is-fullwidth is-centered is-bordered ">`;
-
-// const htmlEngEnd = `</section>`;
-
-// const htmlIntStart = `<section id="internContainer" class="box is-fullwidth columns is-centered is-bordered">`;
-
-// const htmlIntEnd = `</section>`;
-
-// const htmlEnd = `</main > </body ></html > `;
-
-
-// const dataBox = `< div class="box bd-notification is-primary column is-one-fifth is-bordered" >
-//     <ul class="">
-//         <li>
-//             <ul>
-//                 <li><span class="container title is-5-fullhd">Name</span></li>
-//                 <li><span class="container title is-4-fullhd">title</span></li>
-//             </ul>
-//         </li>
-//         <li>
-//             <ul>
-//                 <li><span class="box">ID</span></li>
-//                 <li><span class="box">Email</span></li>
-//                 <li><span class="box">Office Number</span></li>
-//             </ul>
-//         </li>
-
-//     </ul>
-// </div > `;
-
-
+}
 
 
 
@@ -217,34 +217,35 @@ function saveFile(personnelData, fileName) {
 
 };
 
-
-
-
-
-
-
-let manager;
 let intern = [];
 let engineer = [];
 let engineerFile = [];
+let manager;
+let managerGlb;
+let engineerGlb = [];
+let internGlb = [];
 
-let managerGlb = {};
-
+// let name;
+// let id;
+// let email;
+// let unique;
+// let position;
 
 async function main() {
-
-
-
+    writeHTMLFile();
     let personnelData = await inquirer.prompt(managerPrompts);
+    //manager = new Manager(personnelData.name, personnelData.ID, personnelData.email, personnelData.unique);
+    let person = new Manager(personnelData.name, personnelData.ID, personnelData.email, personnelData.unique);
 
-    manager = new Manager(personnelData.name, personnelData.ID, personnelData.email, personnelData.unique);
+    let name = person.getName();
+    let id = person.getId();
+    let email = person.getEmail();
+    let unique = person.getNumber();
+    let role = person.getRole();
 
-    managerGlb = manager.getRole();
-
+    appendDetails(name, id, email, unique, role);
 
     let answer = false;
-    let eCntr = 0;
-    let iCntr = 0;
 
     do {
         const mainMenuChoice = await inquirer.prompt(menuPrompts);
@@ -253,16 +254,29 @@ async function main() {
 
             let personnelData = await inquirer.prompt(engineerPrompts);
             engineerFile.push(personnelData);
-            engineer[eCntr] = new Engineer(personnelData.name, personnelData.ID, personnelData.email, personnelData.unique);
-            eCntr++;
+            const person = new Engineer(personnelData.name, personnelData.ID, personnelData.email, personnelData.unique);
+
+            let name = person.getName();
+            let id = person.getId();
+            let email = person.getEmail();
+            let unique = person.getGithub();
+            let role = person.getRole();
+
+            appendDetails(name, id, email, unique, role);
 
         }
 
         else if (mainMenuChoice.menuSelection == 'Add an Intern') {
 
             let personnelData = await inquirer.prompt(internPrompts);
-            intern[iCntr] = new Intern(personnelData.name, personnelData.ID, personnelData.email, personnelData.unique);
-            iCntr++;
+            const person = new Intern(personnelData.name, personnelData.ID, personnelData.email, personnelData.unique);
+            let name = person.getName();
+            let id = person.getId();
+            let email = person.getEmail();
+            let unique = person.getSchool();
+            let role = person.getRole();
+
+            appendDetails(name, id, email, unique, role);
         }
         else {
             answer = true;
@@ -270,26 +284,14 @@ async function main() {
 
     } while (answer === false);
 
-    console.log(manager);
-    console.log(engineer);
-    console.log(intern);
-    console.log(engineerFile);
 
     let saveToFile = saveFile(manager, 'manager');  // Save Mngr details
     saveToFile = saveFile(engineerFile, 'engineer');  // Save Engr details
-    saveToFile = saveFile(intern, 'intern');  // Save Intrn details
-    
+    saveToFile = saveFile(intern, 'intern');  // Save Intrn details  
 
-    
+    console.log(name);
 
-
-
-
-    writeToFile(HTMLfile);
-
-   
-
-
+    //writeToFile(name);
 
 
 
@@ -300,87 +302,203 @@ async function main() {
 
 main();
 
-// const htmlMan =
-//     `< div class="box bd-notification is-primary column is-one-fifth is-bordered" >
-// <ul class="">
-//   <li>
-//       <ul>
-//           <li><span class="container title is-5-fullhd">${managerName}</span></li>
-//           <li><span class="container title is-4-fullhd">Manager</span></li>
-//       </ul>
-//   </li>
-//   <li>
-//       <ul>
-//           <li><span class="box"></span></li>
-//           <li><span class="box"></span></li>
-//           <li><span class="box"></span></li>
-//       </ul>
-//   </li>
-
-// </ul>
-// </div >`;
-
-
-const htmlManStart = `
-<section id="managerContainer" class="columns box is-fullwidth columns is-centered is-bordered">`;
 
 
 
-// let htmlEngr;
 
-// htmlEngrInt = () => {
-//     for (let i = 0; i < engineer.length; i++) {
-//         htmlEngr +=
-//             `< div class="box bd-notification is-primary column is-one-fifth is-bordered" >
-//     <ul class="">
-//             <li>
-//             <ul>
-//                 <li><span class="container title is-5-fullhd">${engineer[i].name}</span></li>
-//                 <li><span class="container title is-4-fullhd">Manager</span></li>
-//             </ul>
-//         </li>
-//         <li>
-//             <ul>
-//                 <li><span class="box">${engineer[i].ID}</span></li>
-//                 <li><span class="box">${engineer[i].email}</span></li>
-//                 <li><span class="box">${engineer[i].unique}</span></li>
-//             </ul>
-//         </li>
 
-//     </ul>
-// </div > `;
-//     }
+// function writeToFile(name) {
+
+//     const htmlFileStart = `<!DOCTYPE html>
+// <html lang="en">
+
+// <head>
+//     <meta charset="UTF-8">
+//     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+//     <meta name="viewport" content="width=device-width, initial-scale=1">
+//     <link rel="stylesheet" href="./assets/css/reset.css">
+//     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+//     <link rel="stylesheet" href="./assets/css/style.css">
+//     <title>Document</title>
+// </head>
+
+// <body class="container">
+//     <nav class="navbar" role="navigation" aria-label="main navigation ">
+//         <div class="navbar-brand">
+//             <a class="navbar-item" href="https://bulma.io">
+//                 <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+//             </a>
+
+//             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+//                 data-target="navbarBasicExample">
+//                 <span aria-hidden="true"></span>
+//                 <span aria-hidden="true"></span>
+//                 <span aria-hidden="true"></span>
+//             </a>
+//         </div>
+
+//         <div id="navbarBasicExample" class="navbar-menu">
+//             <div class="navbar-start">
+//                 <a class="navbar-item">
+//                     Home
+//                 </a>
+
+//                 <a class="navbar-item">
+//                     Documentation
+//                 </a>
+
+//                 <div class="navbar-item has-dropdown is-hoverable">
+//                     <a class="navbar-link">
+//                         More
+//                     </a>
+
+//                     <div class="navbar-dropdown">
+//                         <a class="navbar-item">
+//                             About
+//                         </a>
+//                         <a class="navbar-item">
+//                             Jobs
+//                         </a>
+//                         <a class="navbar-item">
+//                             Contact
+//                         </a>
+//                         <hr class="navbar-divider">
+//                         <a class="navbar-item">
+//                             Report an issue
+//                         </a>
+//                     </div>
+//                 </div>
+//             </div>
+
+//             <div class="navbar-end">
+//                 <div class="navbar-item">
+//                     <div class="buttons">
+//                         <a class="button is-primary">
+//                             <strong>Sign up</strong>
+//                         </a>
+//                         <a class="button is-light">
+//                             Log in
+//                         </a>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </nav>
+
+//     <main class="container is-relative ">`;
+
+
+
+
+//     const htmlMan =
+//         `< div class="box bd-notification is-primary column is-one-fifth is-bordered" >
+//  <ul class="">
+//    <li>
+//        <ul>
+//            <li><span class="container title is-5-fullhd">${name}</span></li>
+//            <li><span class="container title is-4-fullhd">Manager</span></li>
+//        </ul>
+//    </li>
+//    <li>
+//        <ul>
+//            <li><span class="box"></span></li>
+//            <li><span class="box"></span></li>
+//            <li><span class="box"></span></li>
+//        </ul>
+//    </li>
+
+//  </ul>
+//  </div >`;
+
+//     const htmlManStart = `
+// <section id="managerContainer" class="columns box is-fullwidth columns is-centered is-bordered">`;
+
+
+
+//     // let htmlEngr;
+
+//     // htmlEngrInt = () => {
+//     //     for (let i = 0; i < engineer.length; i++) {
+//     //         htmlEngr +=
+//     //             `< div class="box bd-notification is-primary column is-one-fifth is-bordered" >
+//     //     <ul class="">
+//     //             <li>
+//     //             <ul>
+//     //                 <li><span class="container title is-5-fullhd">${engineer[i].name}</span></li>
+//     //                 <li><span class="container title is-4-fullhd">Manager</span></li>
+//     //             </ul>
+//     //         </li>
+//     //         <li>
+//     //             <ul>
+//     //                 <li><span class="box">${engineer[i].ID}</span></li>
+//     //                 <li><span class="box">${engineer[i].email}</span></li>
+//     //                 <li><span class="box">${engineer[i].unique}</span></li>
+//     //             </ul>
+//     //         </li>
+
+//     //     </ul>
+//     // </div > `;
+//     //     }
+
+//     // }
+
+//     //let htmlMan;
+
+
+//     // const htmlManEnd = `</section>`;
+
+//     // const htmlEngStart = `<section id="engineerContainer" class="columns box is-fullwidth is-centered is-bordered ">`;
+
+//     // const htmlEngEnd = `</section>`;
+
+//     // const htmlIntStart = `<section id="internContainer" class="box is-fullwidth columns is-centered is-bordered">`;
+
+//     // const htmlIntEnd = `</section>`;
+
+//     // const htmlEnd = `</main > </body ></html > `;
+
+
+//     // const dataBox = `< div class="box bd-notification is-primary column is-one-fifth is-bordered" >
+//     //     <ul class="">
+//     //         <li>
+//     //             <ul>
+//     //                 <li><span class="container title is-5-fullhd">Name</span></li>
+//     //                 <li><span class="container title is-4-fullhd">title</span></li>
+//     //             </ul>
+//     //         </li>
+//     //         <li>
+//     //             <ul>
+//     //                 <li><span class="box">ID</span></li>
+//     //                 <li><span class="box">Email</span></li>
+//     //                 <li><span class="box">Office Number</span></li>
+//     //             </ul>
+//     //         </li>
+
+//     //     </ul>
+//     // </div > `;
+
+
+//     let HTMLfile = htmlFileStart;
+//     HTMLfile += htmlManStart;
+//     HTMLfile += htmlMan;
+//     // HTMLfile += htmlManEnd;
+//     // HTMLfile += htmlEngStart;
+//     // HTMLfile += htmlEngr
+//     // HTMLfile += htmlEngEnd;
+//     // HTMLfile += htmlIntStart;
+//     // HTMLfile += //Inser iNTERN details here
+//     //     HTMLfile += htmlIntEnd;
+//     // HTMLfile += htmlEnd;
+
+//     fs.writeFile('./dist/team.html', HTMLfile, (err) =>
+//         err ? console.log(err) : console.log('Success!')
+//     );
+
+//     // console.log(managerGlb);
+//     //console.log(engineerGlb);
+//     // console.log(internGlb);
 
 // }
-
-
-
-let HTMLfile = htmlFileStart;
-HTMLfile += htmlManStart;
-//HTMLfile += htmlMan;
-// HTMLfile += htmlManEnd;
-// HTMLfile += htmlEngStart;
-// HTMLfile += htmlEngr
-// HTMLfile += htmlEngEnd;
-// HTMLfile += htmlIntStart;
-// HTMLfile += //Inser iNTERN details here
-//     HTMLfile += htmlIntEnd;
-// HTMLfile += htmlEnd;
-
-
-function writeToFile(HTMLfile) {
-    console.log(HTMLfile);
-    fs.writeFile('./dist/team.html', HTMLfile, (err) =>
-        err ? console.log(err) : console.log('Success!')
-    );
-    
-    
-    console.log(manager.name);
-    
-}
-
-
-
 
 module.exports = { manager, engineer, intern };
 
