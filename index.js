@@ -24,6 +24,18 @@ managerPrompts = [
         type: 'input',
         name: 'email',
         message: "Email:  ",
+        default: () => { },
+        validate: function (email) {
+
+            valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log(".  Please enter a valid email")
+                return false;
+            }
+        }
     },
     {
         type: 'number',
@@ -59,6 +71,18 @@ engineerPrompts = [
         type: 'input',
         name: 'email',
         message: "Email:  ",
+        default: () => { },
+        validate: function (email) {
+
+            valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log(".  Please enter a valid email")
+                return false;
+            }
+        }
     },
     {
         type: 'input',
@@ -82,6 +106,18 @@ internPrompts = [
         type: 'input',
         name: 'email',
         message: "Email:  ",
+        default: () => { },
+        validate: function (email) {
+
+            valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+
+            if (valid) {
+                return true;
+            } else {
+                console.log(".  Please enter a valid email")
+                return false;
+            }
+        }
     },
     {
         type: 'input',
