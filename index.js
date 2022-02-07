@@ -151,14 +151,15 @@ appendDetails = (name, id, email, uniqueLabel, unique, role) => {
 appendEnd = () => {
 
     const htmlEnd = `</section>
-        </main>
-            <footer class="footer">
-                <div class="content has-text-centered">
-                    <h4 class="is-align-content-center"> &copy &#x1d19&#670 2021 </h4>
-                </div>
-            </footer>
-        </body>
-        </html>`;
+    </main>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <h4 class="is-align-content-center"> &copy &#x1d19&#670 2022 </h4>
+        </div>
+    </footer>
+</body>
+
+</html>`;
 
     fs.appendFile('./dist/team.html', htmlEnd, (err) =>
         err ? console.log(err) : null
@@ -166,15 +167,6 @@ appendEnd = () => {
 
 
 }
-
-
-// function saveFile(personnelData, fileName) {
-//     const fileData = JSON.stringify(personnelData);
-//     fileName = (`./src/${fileName}.JSON`);
-//     fs.writeFile(fileName, fileData, (err) =>
-//         err ? console.log(err) : null);
-
-// };
 
 
 async function main() {
