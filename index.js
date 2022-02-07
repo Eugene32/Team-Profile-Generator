@@ -16,7 +16,7 @@ managerPrompts = [
         message: "Manager's Name:  ",
     },
     {
-        type: 'input',
+        type: 'number',
         name: 'ID',
         message: "Employee ID:  ",
     },
@@ -26,7 +26,7 @@ managerPrompts = [
         message: "Email:  ",
     },
     {
-        type: 'input',
+        type: 'number',
         name: 'unique',
         message: 'Office Phone Number:  ',
     },
@@ -51,7 +51,7 @@ engineerPrompts = [
         message: "Engineer's name:  ",
     },
     {
-        type: 'input',
+        type: 'number',
         name: 'ID',
         message: "Employee ID:  ",
     },
@@ -74,7 +74,7 @@ internPrompts = [
         message: "Intern's name:  ",
     },
     {
-        type: 'input',
+        type: 'number',
         name: 'ID',
         message: "Employee ID:  ",
     },
