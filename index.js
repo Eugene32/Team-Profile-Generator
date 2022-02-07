@@ -121,7 +121,7 @@ const writeHTMLFile = () => {
 }
 
 appendDetails = (name, id, email, uniqueLabel, unique, role) => {
-    console.log('append_manager_details');
+
     const htmlMan =
         `      <div class="box bd-notification is-primary is-one-fifth is-bordered" style="width: 20%; height: 20%;">
  <ul class="">
@@ -148,20 +148,39 @@ appendDetails = (name, id, email, uniqueLabel, unique, role) => {
 
 }
 
+appendEnd = () => {
+
+    const htmlEnd = `</section>
+        </main>
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <h4 class="is-align-content-center"> &copy &#x1d19&#670 2021 </h4>
+                </div>
+            </footer>
+        </body>
+        </html>`;
+
+    fs.appendFile('./dist/team.html', htmlEnd, (err) =>
+        err ? console.log(err) : null
+    );
 
 
+}
 
-function saveFile(personnelData, fileName) {
-    const fileData = JSON.stringify(personnelData);
-    fileName = (`./src/${fileName}.JSON`);
-    fs.writeFile(fileName, fileData, (err) =>
-        err ? console.log(err) : null);
 
-};
+// function saveFile(personnelData, fileName) {
+//     const fileData = JSON.stringify(personnelData);
+//     fileName = (`./src/${fileName}.JSON`);
+//     fs.writeFile(fileName, fileData, (err) =>
+//         err ? console.log(err) : null);
+
+// };
 
 
 async function main() {
-    writeHTMLFile();
+
+    writeHTMLFile();  // Prepare the HTML file, this overwrites the previous file.
+
     let personnelData = await inquirer.prompt(managerPrompts);
     let person = new Manager(personnelData.name, personnelData.ID, personnelData.email, personnelData.unique);
 
@@ -182,7 +201,7 @@ async function main() {
         if (mainMenuChoice.menuSelection == 'Add an Engineer') {
 
             let personnelData = await inquirer.prompt(engineerPrompts);
-            
+
             const person = new Engineer(personnelData.name, personnelData.ID, personnelData.email, personnelData.unique);
 
             let name = person.getName();
@@ -199,8 +218,13 @@ async function main() {
 
         else if (mainMenuChoice.menuSelection == 'Add an Intern') {
 
+            //Prompts for intern details
             let personnelData = await inquirer.prompt(internPrompts);
+
+            //Creates person based on intern details
             const person = new Intern(personnelData.name, personnelData.ID, personnelData.email, personnelData.unique);
+
+            //Retrieve information for the person
             let name = person.getName();
             let id = person.getId();
             let email = person.getEmail();
@@ -208,6 +232,7 @@ async function main() {
             let role = person.getRole();
             let uniqueLabel = 'School';
 
+            //Append the details to file
             appendDetails(name, id, email, uniqueLabel, unique, role);
         }
         else {
@@ -216,14 +241,7 @@ async function main() {
 
     } while (answer === false);
 
- 
-
-    
-
-  
-
-
-
+    appendEnd();
 }
 
 main();
