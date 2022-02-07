@@ -21,7 +21,7 @@
 
 ### Installation:    
 - Fork or copy the whole directory.
-- Change to directory where index.js is located.
+- Under console, command prompt, or terminal, change to directory where index.js is located.
 - Type 'npm i'.
 - Type 'node index.js' to start.
 
