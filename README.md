@@ -32,8 +32,12 @@
 - Under development
 
 ### Demo:  
-- Demo page:  [demo](src/demo_page.png)
-- Vide link:  [Video](https://watch.screencastify.com/v/QAww3m0zcQC8nRVCLdV2)
+- Demo page: 
+![alt text][logo]
+
+[logo]: src/demo_page.pn "Team Generator demo"
+
+- Video link:  [Video](https://watch.screencastify.com/v/QAww3m0zcQC8nRVCLdV2)
 
 ### Questions: 
 
