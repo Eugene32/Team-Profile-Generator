@@ -159,7 +159,7 @@ const writeHTMLFile = () => {
 appendDetails = (name, id, email, uniqueLabel, unique, role) => {
 
     const htmlMan =
-        `      <div class="box bd-notification is-primary is-one-fifth is-bordered" style="width: 20%; height: 20%;">
+        `      <div class="box bd-notification is-primary is-one-fifth is-bordered" style="height: 20%;">
  <ul class="">
    <li>
        <ul>
