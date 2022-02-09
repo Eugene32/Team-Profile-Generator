@@ -23,7 +23,9 @@
 - Fork or copy the whole directory.
 - Under console, command prompt, or terminal, change to directory where index.js is located.
 - Type 'npm i'.
+- Type 'npm install --save-dev jest'.  This will install the JEST testing package.
 - Type 'node index.js' to start.
+
 
 ### Usage:  
 - Can be used for any device.
@@ -32,7 +34,10 @@
 - None
 
 ### Tests:  
-- Under development
+- Tests all *Class.js
+- Test JS under 'tests' folder.
+- To start the test, be sure to be in the file directory.
+    - Type 'npm test' then ENTER to start the testing.
 
 ### Demo:  
 - Demo page: 
